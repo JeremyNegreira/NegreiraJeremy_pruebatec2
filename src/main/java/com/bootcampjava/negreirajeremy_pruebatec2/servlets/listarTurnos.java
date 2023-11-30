@@ -31,7 +31,7 @@ public class listarTurnos extends HttpServlet {
         List<Turno> listaTurnos = controlador.traerTurnos();
         
         request.setAttribute("listaTurnos", listaTurnos);
-        request.getRequestDispatcher("lista.jsp").forward(request, response);
+        request.getRequestDispatcher("/lista.jsp").forward(request, response);
     }
 
     /**

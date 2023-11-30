@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@page import="com.bootcampjava.negreirajeremy_pruebatec2.logica.Turno"%>
 <%@page import="com.bootcampjava.negreirajeremy_pruebatec2.logica.Ciudadano"%>
-<%@page import="java.time.format.DateTimeFormatter"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,42 +10,32 @@
     </head>
     <body>
         <h1>Turnos:</h1><br>
-        <% if (request.getAttribute("turnosFiltrado") != null && !((List<Turno>) request.getAttribute("turnosFiltrado")).isEmpty()) { %>
+        <% if (request.getAttribute("listaTurnos") != null && !((List<Turno>) request.getAttribute("listaTurnos")).isEmpty()) { %>
         <h3>Resultados:</h3>
-        <!-- Tabla para mostrar los resultados filtrados -->
-        <table class="table">
-            <thead class="thead-dark">
+        <table>
+            <thead>
                 <tr>
-                    <th>Numero de turno</th>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>DNI</th>
+                    <th>Número de turno</th>
+                    <th>Ciudadano</th>
                     <th>Fecha</th>
-                    <th>Hora</th>
-                    <th>Tramite</th>
+                    <th>Descripcion</th>
                     <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Iterar sobre la lista de turnos filtrados -->
-                <% for (Turno turno : (List<Turno>) request.getAttribute("turnosFiltrado")) {%>
+                <% for (Turno turno : (List<Turno>) request.getAttribute("listaTurnos")) {%>
                 <tr>
                     <td><%= turno.getId()%></td>
-                    <td><%= turno.getCiudadano().getId()%></td>
-                    <td><%= turno.getCiudadano().getNombre()%></td>
-                    <td><%= turno.getCiudadano().getApellido()%></td>
-                    <td><%= turno.getCiudadano().getDni()%></td>
-                    <td><%= turno.getFecha().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))%></td>
-                    <td><%= turno.getHora().format(DateTimeFormatter.ofPattern("HH:mm"))%></td>
-                    <td><%= turno.getDescripcion()%></td>
+                    <td><%= turno.getCiudadano().getDni()+ " " + turno.getCiudadano().getNombre()%></td>
+                    <td><%= turno.getFecha()%></td>
+                    <td><%= turno.getTramite()%></td>
                     <td><%= turno.getEstado()%></td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
         <% } else { %>
-        <p>No hay resultados.</p>
+        <p>No hay resultados</p>
         <% }%>
     </body>
 </html>

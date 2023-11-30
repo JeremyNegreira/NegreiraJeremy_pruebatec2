@@ -34,8 +34,8 @@ public class listarTurnosFiltrados extends HttpServlet {
         
         List<Turno> listaTurnoFiltrado = controlador.traerTurnosFiltrado(LocalDate.parse(fechaMinimaFiltrado), estado);
         
-        request.setAttribute("listaTurnosFiltrados", listaTurnoFiltrado);
-        request.getRequestDispatcher("listado.jsp").forward(request, response);
+        request.setAttribute("listaTurnos", listaTurnoFiltrado);
+        request.getRequestDispatcher("/listado.jsp").forward(request, response);
     }
     
         /**
